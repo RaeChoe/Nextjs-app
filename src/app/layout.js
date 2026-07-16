@@ -1,15 +1,9 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 
 export const metadata = {
   title: "Create Next App",
@@ -18,8 +12,49 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body>{children}</body>
+    <html lang="en">
+      <body>
+        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+          <div className="container-fluid d-flex justify-content-between">
+            <h1>
+              <a className="navbar-brand" href="#">
+                Web
+              </a>
+            </h1>
+            <ul className="nav d-flex">
+              <li className="nav-item">
+                <a className="nav-link" aria-current="page" href="#">
+                  html
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#">
+                  css
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#">
+                  javascript
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <main>
+          {children}
+          <div className="d-flex gap-1">
+            <button type="button" class="btn btn-primary">
+              Create
+            </button>
+            <button type="button" class="btn btn-secondary">
+              Update
+            </button>
+            <button type="button" class="btn btn-danger">
+              Delete
+            </button>
+          </div>
+        </main>
+      </body>
     </html>
   );
 }
