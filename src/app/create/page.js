@@ -1,7 +1,13 @@
 export default function Create() {
   return (
     <>
-      <h3>Create Form</h3>
+      <h3 style={styles.title}>Create Form</h3>
     </>
   );
 }
+
+const styles = {
+  title: {
+    color: "green",
+  },
+};
