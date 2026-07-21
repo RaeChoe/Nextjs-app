@@ -23,7 +23,7 @@ export default async function RootLayout({ children }) {
   //       setTopics(result);
   //     });
   // }, []);
-  const response = await fetch("http://localhost:9999/topics");
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/topics`);
   const topics = await response.json();
   console.log(topics);
 

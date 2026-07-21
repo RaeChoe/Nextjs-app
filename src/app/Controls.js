@@ -7,12 +7,15 @@ export default function Controls() {
   const router = useRouter();
 
   const handleDelete = () => {
-    if (!window.confirm("정말 삭제할까요?")) return;
-    fetch(`http://localhost:9999/topics/${id}`, { method: "DELETE" })
-      .then(res => res.json)
-      .then(result => {
-        router.push("/");
-        router.refresh(); // 전체 새로고침
+    const ok = window.confirm("정말 삭제하시겠습니까?");
+    if (!ok) return; // 취소 시 중단
+
+    const options = { method: "DELETE" };
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/topics/${id}`, options)
+      .then(resp => resp.json())
+      .then(() => {
+        router.push("/"); //삭제후 홈으로 이동
+        router.refresh(); //목록 새로고침
       });
   };
 
